@@ -4,6 +4,7 @@
   --color-accent: #d4af37;
   --color-accent-light: #e3c97e;
   --color-shadow: rgba(0, 0, 0, 0.7);
+  --color-shadow-light: rgba(57, 57, 57, 0.3);
 }
 
 * {
