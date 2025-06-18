@@ -1,0 +1,9 @@
+.content-placeholder {
+  padding: 2rem;
+  min-height: 80vh; /* Make it tall enough */
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
