@@ -1,0 +1,69 @@
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-image: url('https://images.pexels.com/photos/4476375/pexels-photo-4476375.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  min-height: 30vh;
+  z-index: 0; /* for stacking context */
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
+}
+
+.hero-text,
+.hero-cta {
+  position: relative;
+  z-index: 2;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.hero-cta button {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-cta button:hover {
+  background-color: var(--color-accent-light);
+  color: #000000;
+}
+
+/* Optional: make it responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+}
