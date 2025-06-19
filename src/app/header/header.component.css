@@ -1,40 +1,76 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: var(--color-bg);
-  padding: 1rem 2rem;
-  color: var(--color-text);
-  box-shadow: 0 2px 8px var(--color-shadow);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-h1 {
-  margin: 0;
   color: var(--color-accent);
-  font-size: 3rem;
-  font-weight: 500;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  padding: 1rem 2rem;
+  z-index: 100;
 }
-
-.nav a {
+.navbar-toggler-icon {
+  position: relative;
+  width: 24px;
+  height: 18px;
   cursor: pointer;
-  color: var(--color-text);
-  text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: 600;
-  font-size: 1.25rem;
-  padding-bottom: 4px;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-  border-bottom: 2px solid transparent;
+  display: inline-block;
 }
 
-.nav a:hover,
-.nav a.active {
+.navbar-toggler-icon span,
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent);
+  left: 0;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+/* Position the 3 lines */
+.navbar-toggler-icon::before {
+  top: 0;
+}
+
+.navbar-toggler-icon span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar-toggler-icon::after {
+  bottom: 0;
+}
+
+/* When the navbar toggler is NOT collapsed (i.e., open), animate to X */
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon span {
+  opacity: 0;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+  bottom: 50%;
+  transform: rotate(-45deg);
+}
+
+
+
+.navbar-nav .nav-link {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  display: inline-block;
+  width: fit-content;
+  padding-bottom: 4px;
+}
+
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
   color: var(--color-accent);
   border-bottom: 2px solid var(--color-accent);
 }

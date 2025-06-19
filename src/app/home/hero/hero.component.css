@@ -9,9 +9,13 @@
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
-  min-height: 30vh;
+  min-height: 70vh;
   z-index: 0; /* for stacking context */
   overflow: hidden;
+}
+
+.hero-content {
+  margin: 4rem;
 }
 
 .hero::before {
@@ -44,6 +48,7 @@
   background-color: var(--color-accent);
   color: var(--color-bg);
   border: none;
+  margin-top: 1rem;
   padding: 1rem 2rem;
   font-size: 1rem;
   cursor: pointer;

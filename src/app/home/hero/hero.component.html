@@ -1,9 +1,11 @@
-<section class="hero">
-  <div class="hero-text">
-    <h1>Your bookkeeping solution</h1>
-    <p>Expert financial care to grow and protect your business.</p>
-  </div>
-  <div class="hero-cta">
-    <button>Get Started</button>
+<section class="hero" [ngStyle]="{ 'background-image': backgroundImage }">
+  <div class="hero-content">
+    <div class="hero-text fade-in">
+      <h1>{{ headline }}</h1>
+      <p>{{ subtext }}</p>
+    </div>
+    <div class="hero-cta fade-in">
+      <button>{{ buttonText }}</button>
+    </div>
   </div>
 </section>

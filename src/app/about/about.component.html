@@ -1,3 +1,90 @@
-<h2>About Us</h2>
-<p>This is the about page of the site. Add anything you want here.</p>
+<app-hero
+  [headline]="'Get to Know Safe Bookkeeping'"
+  [subtext]="'Personalized service. Reliable results. Peace of mind.'"
+  [buttonText]="'Meet the Team'"
+  [backgroundImage]="'url(https://images.pexels.com/photos/6693651/pexels-photo-6693651.jpeg)'"
+></app-hero>
 
+<div class="container py-5">
+
+  <!-- Page Heading -->
+  <h1 class="text-center text-warning mb-5">About Safe Bookkeeping</h1>
+
+  <!-- Intro Paragraph -->
+  <section class="mb-5">
+    <p class="lead text-light text-center">
+      At <strong>Safe</strong>, we understand that managing your business finances can be overwhelming. That’s why we’re dedicated to providing reliable, accurate, and affordable bookkeeping services — so you can focus on running your business.
+    </p>
+  </section>
+
+  <!-- Meet the Founder -->
+  <section class="mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0 text-center">
+        <img src="https://images.pexels.com/photos/3861447/pexels-photo-3861447.jpeg"
+             alt="Founder Photo"
+             class="img-fluid rounded shadow"
+             style="max-height: 300px;" />
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-warning">Meet Our Founder</h2>
+        <p class="text-light mt-3">
+          Founded by <strong>[Your Name]</strong>, a certified bookkeeper with over [X] years of experience, Safe specializes in helping small businesses, freelancers, and startups keep their books organized and compliant.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="mb-5">
+    <h2 class="text-warning text-center mb-4">What Our Clients Say</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card bg-dark text-light h-100">
+          <div class="card-body">
+            <p class="fst-italic">"Safe has transformed how I manage my finances. Their attention to detail and friendly service make all the difference!"</p>
+            <footer class="blockquote-footer text-warning mt-3">Jane Doe, Small Business Owner</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card bg-dark text-light h-100">
+          <div class="card-body">
+            <p class="fst-italic">"Professional, reliable, and always available when I need them. Highly recommend Safe Bookkeeping for anyone who wants peace of mind."</p>
+            <footer class="blockquote-footer text-warning mt-3">John Smith, Freelancer</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card bg-dark text-light h-100">
+          <div class="card-body">
+            <p class="fst-italic">"Their expertise helped me save time and avoid costly mistakes. I trust Safe completely."</p>
+            <footer class="blockquote-footer text-warning mt-3">Emily R., Startup Founder</footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2 class="text-warning">Why Choose Us?</h2>
+        <p class="text-light mt-3">
+          Unlike large firms, we offer personalized service tailored to your unique needs. We combine expert knowledge with the latest technology to keep your books accurate and up to date.
+        </p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="assets/images/secure-docs.png" alt="Secure Documents" class="img-fluid" style="max-height: 220px;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="text-center mt-5">
+    <p class="text-light fs-5 mb-3">Ready to take the stress out of bookkeeping?</p>
+    <a routerLink="/contact" class="btn btn-warning btn-lg">Contact Us Today</a>
+  </section>
+
+</div>
