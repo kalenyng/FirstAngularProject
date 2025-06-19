@@ -13,7 +13,12 @@ export const routes: Routes = [
   },
   {
     path: 'contact',
-    loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent)
+    loadComponent: () =>
+      import('./contact/contact.component').then((m) => m.ContactComponent)
+  },
+  {
+    path: 'email-sent',
+    loadComponent: () =>
+      import('./contact/email-sent/email-sent.component').then((m) => m.EmailSentComponent)
   }
-
 ];

@@ -1,21 +1,33 @@
 <div class="contact-container">
   <h2>Contact Us</h2>
-  <form>
+  <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
     <div>
       <label for="name">Name</label>
-      <input id="name" type="text" name="name" required />
+      <input id="name" type="text" name="name" required [(ngModel)]="form.name" />
     </div>
 
     <div>
       <label for="email">Email</label>
-      <input id="email" type="email" name="email" required />
+      <input id="email" type="email" name="email" required [(ngModel)]="form.email" />
     </div>
 
     <div>
       <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
+      <textarea id="message" name="message" required [(ngModel)]="form.message"></textarea>
     </div>
 
-    <button type="submit">Send</button>
+    <button
+      type="submit"
+      [disabled]="!contactForm.form.valid || isLoading"
+    >
+      <span *ngIf="!isLoading">Send</span>
+      <span *ngIf="isLoading">
+    <span class="spinner"></span> Sending...
+  </span>
+    </button>
+
+
   </form>
+
+  <p *ngIf="isSubmitted">Thank you! Your message has been sent.</p>
 </div>
