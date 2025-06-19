@@ -20,43 +20,44 @@ export class ContactComponent {
   isSubmitted = false;
   isLoading = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.isSubmitted = localStorage.getItem('contactSubmitted') === 'true';
+  }
 
   sendEmail() {
-    if (this.isLoading) return; // prevent multiple sends
+    if (this.isLoading) return;
 
-    this.isLoading = true; // start loading
+    this.isLoading = true;
 
     const currentYear = new Date().getFullYear();
 
-    // First: Send to yourself
     emailjs.send('service_gnri5zs', 'template_j9za66g', {
       from_name: this.form.name,
       email: this.form.email,
       message: this.form.message,
       current_year: currentYear
     }, 'pT9gayVqHY9iOu6bS')
-      .then(() => {
-        console.log('Notification sent to you');
-
-        // Then: Send auto-reply to user
-        return emailjs.send('service_gnri5zs', 'template_ql8tp1g', {
-          name: this.form.name,
-          email: this.form.email,
-          message: this.form.message,
-          time: new Date().toLocaleString(),
-          current_year: currentYear
-        }, 'pT9gayVqHY9iOu6bS');
-      })
-      .then(() => {
-        console.log('Auto-reply sent');
-        this.isSubmitted = true;
-        this.isLoading = false; // stop loading
-        this.router.navigate(['/email-sent']);
-      })
-      .catch((error) => {
-        console.error('Something went wrong:', error);
-        this.isLoading = false; // stop loading on error
-      });
+        .then(() => {
+          console.log('Notification sent to you');
+          return emailjs.send('service_gnri5zs', 'template_ql8tp1g', {
+            name: this.form.name,
+            email: this.form.email,
+            message: this.form.message,
+            time: new Date().toLocaleString(),
+            current_year: currentYear
+          }, 'pT9gayVqHY9iOu6bS');
+        })
+        .then(() => {
+          console.log('Auto-reply sent');
+          this.isSubmitted = true;
+          localStorage.setItem('contactSubmitted', 'true');
+          this.isLoading = false;
+          this.router.navigate(['/email-sent']);
+        })
+        .catch((error) => {
+          console.error('Something went wrong:', error);
+          this.isLoading = false;
+        });
   }
 }
+
