@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import emailjs from 'emailjs-com';
+import { Router } from '@angular/router';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
+  imports: [FormsModule, NgIf],
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
@@ -16,11 +17,46 @@ export class ContactComponent {
     message: ''
   };
 
-  status = '';
+  isSubmitted = false;
+  isLoading = false;
 
-  submitForm() {
-    console.log('Form data:', this.form);
-    this.status = 'Message sent! Thank you for contacting us.';
-    this.form = { name: '', email: '', message: '' };
+  constructor(private router: Router) {}
+
+  sendEmail() {
+    if (this.isLoading) return; // prevent multiple sends
+
+    this.isLoading = true; // start loading
+
+    const currentYear = new Date().getFullYear();
+
+    // First: Send to yourself
+    emailjs.send('service_gnri5zs', 'template_j9za66g', {
+      from_name: this.form.name,
+      email: this.form.email,
+      message: this.form.message,
+      current_year: currentYear
+    }, 'pT9gayVqHY9iOu6bS')
+      .then(() => {
+        console.log('Notification sent to you');
+
+        // Then: Send auto-reply to user
+        return emailjs.send('service_gnri5zs', 'template_ql8tp1g', {
+          name: this.form.name,
+          email: this.form.email,
+          message: this.form.message,
+          time: new Date().toLocaleString(),
+          current_year: currentYear
+        }, 'pT9gayVqHY9iOu6bS');
+      })
+      .then(() => {
+        console.log('Auto-reply sent');
+        this.isSubmitted = true;
+        this.isLoading = false; // stop loading
+        this.router.navigate(['/email-sent']);
+      })
+      .catch((error) => {
+        console.error('Something went wrong:', error);
+        this.isLoading = false; // stop loading on error
+      });
   }
 }
