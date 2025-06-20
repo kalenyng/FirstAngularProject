@@ -1,7 +1,9 @@
 :root {
   --white-bg: #ededed;
   --color-bg: #000000;
+  --grey-bg: #111;
   --color-text: #f5f5f5;
+  --text-black: #000000;
   --color-accent: #aa8e18;
   --color-accent-light: #a8943b;
   --color-shadow: rgba(0, 0, 0, 0.7);
