@@ -1,93 +1,86 @@
-<!-- Contact Form Container -->
 <div
-  *ngIf="formVisible"
-  @fadeShrink
-  (@fadeShrink.done)="onAnimationDone($event)"
+  #container
   class="contact-container"
+  [@fadeShrink]="contentState"
+  (@fadeShrink.done)="onAnimationDone($event)"
 >
-  <h2>Contact Us</h2>
+  <ng-container *ngIf="contentState === 'form'; else successTemplate">
+    <h2>Contact Us</h2>
 
-  <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
-    <!-- Name -->
-    <div class="form-group">
-      <input
-        placeholder=" "
-        id="name"
-        type="text"
-        name="name"
-        required
-        [(ngModel)]="form.name"
-        #name="ngModel"
-      />
-      <label for="name">Name</label>
-      <div class="error-message" [class.active]="name.invalid && name.touched">
-        <small *ngIf="name.errors?.['required']">Name is required.</small>
-        <small *ngIf="!name.invalid || !name.touched">&nbsp;</small>
-      </div>
-    </div>
-
-    <!-- Email -->
-    <div class="form-group">
-      <input
-        placeholder=" "
-        id="email"
-        type="email"
-        name="email"
-        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-        required
-        [(ngModel)]="form.email"
-        #email="ngModel"
-      />
-      <label for="email">Email</label>
-      <div class="error-message" [class.active]="email.invalid && email.touched">
-        <small *ngIf="email.errors?.['required']">Email is required.</small>
-        <small *ngIf="email.errors?.['pattern']">Enter a valid email address.</small>
-        <!-- Add a blank &nbsp; as fallback when no error message -->
-        <small *ngIf="!email.invalid || !email.touched">&nbsp;</small>
+    <form (ngSubmit)="sendEmail()" #contactForm="ngForm" novalidate>
+      <!-- Name -->
+      <div class="form-group">
+        <input
+          placeholder=" "
+          id="name"
+          type="text"
+          name="name"
+          required
+          [(ngModel)]="form.name"
+          #name="ngModel"
+        />
+        <label for="name">Name</label>
+        <div class="error-message" [class.active]="name.invalid && name.touched">
+          <small *ngIf="name.errors?.['required']">Name is required.</small>
+          <small *ngIf="!name.invalid || !name.touched">&nbsp;</small>
+        </div>
       </div>
 
-    </div>
-
-    <!-- Message -->
-    <div class="form-group">
-      <textarea
-        placeholder=" "
-        id="message"
-        name="message"
-        required
-        [(ngModel)]="form.message"
-        #message="ngModel"
-      ></textarea>
-      <label for="message">Message</label>
-      <div class="error-message" [class.active]="message.invalid && message.touched">
-        <small *ngIf="message.errors?.['required']">Message is required.</small>
-        <small *ngIf="!message.invalid || !message.touched">&nbsp;</small>
+      <!-- Email -->
+      <div class="form-group">
+        <input
+          placeholder=" "
+          id="email"
+          type="email"
+          name="email"
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          required
+          [(ngModel)]="form.email"
+          #email="ngModel"
+        />
+        <label for="email">Email</label>
+        <div class="error-message" [class.active]="email.invalid && email.touched">
+          <small *ngIf="email.errors?.['required']">Email is required.</small>
+          <small *ngIf="email.errors?.['pattern']">Enter a valid email address.</small>
+          <small *ngIf="!email.invalid || !email.touched">&nbsp;</small>
+        </div>
       </div>
 
+      <!-- Message -->
+      <div class="form-group">
+        <textarea
+          placeholder=" "
+          id="message"
+          name="message"
+          required
+          [(ngModel)]="form.message"
+          #message="ngModel"
+        ></textarea>
+        <label for="message">Message</label>
+        <div class="error-message" [class.active]="message.invalid && message.touched">
+          <small *ngIf="message.errors?.['required']">Message is required.</small>
+          <small *ngIf="!message.invalid || !message.touched">&nbsp;</small>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        [disabled]="!contactForm.form.valid || isLoading"
+      >
+        <span *ngIf="!isLoading">Send</span>
+        <span *ngIf="isLoading">
+          <span class="spinner"></span> Sending...
+        </span>
+      </button>
+    </form>
+  </ng-container>
+
+  <ng-template #successTemplate>
+    <h2>Email Sent!</h2>
+    <p class="text-center">Thanks for your message. <br /> We'll be in touch.</p>
+    <div class="d-flex justify-content-center mt-3">
+      <button routerLink="/">Go to Home</button>
     </div>
-
-    <!-- Submit Button -->
-    <button
-      type="submit"
-      [disabled]="!contactForm.form.valid || isLoading"
-    >
-      <span *ngIf="!isLoading">Send</span>
-      <span *ngIf="isLoading">
-        <span class="spinner"></span> Sending...
-      </span>
-    </button>
-  </form>
-</div>
-
-<!-- Success Message Container -->
-<div
-  *ngIf="isSubmitted"
-  @fadeShrink
-  class="contact-container success-message text-center"
->
-  <h2>Email Sent!</h2>
-  <p>Thanks for your message. <br /> We'll be in touch.</p>
-  <div class="d-flex justify-content-center mt-3">
-    <button routerLink="/">Go to Home</button>
-  </div>
+  </ng-template>
 </div>
