@@ -3,7 +3,6 @@
   margin: 0 auto;
   padding: 3rem 1rem;
   color: #222;
-
 }
 
 .service-item {
@@ -40,6 +39,7 @@
 
 .service-text {
   text-align: left;
+  max-width: 70%;
 }
 
 .service-text h3 {
