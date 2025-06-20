@@ -3,19 +3,24 @@
   margin: 0 auto;
   padding: 3rem 1rem;
   color: #222;
+
 }
 
 .service-item {
   box-shadow: 0 10px 10px var(--color-shadow-light);
   display: flex;
   align-items: center;
-  margin-bottom: 4rem;
+  margin: 0 auto 4rem auto;
   gap: 2rem;
-  padding: 4rem;
+  padding: 4rem 2rem;
   background-color: var(--white-bg);
   border-radius: 5px;
   min-height: 15vh;
+  max-width: 1500px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 
 /* not sure if there should be a reverse class */
 
@@ -35,7 +40,6 @@
 
 .service-text {
   text-align: left;
-  max-width: 50%;
 }
 
 .service-text h3 {
