@@ -9,16 +9,16 @@
   box-shadow: 0 10px 10px var(--color-shadow-light);
   display: flex;
   align-items: center;
-  margin: 0 auto 4rem auto; /* Center and add vertical spacing */
+  margin: 0 auto 4rem auto;
   gap: 2rem;
-  padding: 4rem;
+  padding: 4rem 2rem;
   background-color: var(--color-bg);
   border:1px solid var(--color-accent);
   border-radius: 5px;
   min-height: 15vh;
-  max-width: 1500px; /* Use a fixed max width instead of vw */
-  width: 100%; /* Allow it to shrink on smaller screens */
-  box-sizing: border-box; /* Ensures padding doesn't overflow */
+  max-width: 1500px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -46,7 +46,7 @@ h1 {
 
 .service-text {
   text-align: left;
-  max-width: 50%;
+  max-width: 70%;
 }
 
 .service-text h3 {
