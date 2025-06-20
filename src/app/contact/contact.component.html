@@ -1,20 +1,41 @@
 <div class="contact-container">
   <h2>Contact Us</h2>
   <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
-    <div>
+    <div class="form-group">
+      <input
+        placeholder=" "
+        id="name"
+        type="text"
+        name="name"
+        required
+        [(ngModel)]="form.name"
+      />
       <label for="name">Name</label>
-      <input id="name" type="text" name="name" required [(ngModel)]="form.name" />
     </div>
 
-    <div>
+    <div class="form-group">
+      <input
+        placeholder=" "
+        id="email"
+        type="email"
+        name="email"
+        required
+        [(ngModel)]="form.email"
+      />
       <label for="email">Email</label>
-      <input id="email" type="email" name="email" required [(ngModel)]="form.email" />
     </div>
 
-    <div>
+    <div class="form-group">
+  <textarea
+    placeholder=" "
+    id="message"
+    name="message"
+    required
+    [(ngModel)]="form.message"
+  ></textarea>
       <label for="message">Message</label>
-      <textarea id="message" name="message" required [(ngModel)]="form.message"></textarea>
     </div>
+
 
     <button
       type="submit"
