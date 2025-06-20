@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-/* Wrapper for h2 + form */
+/* Wrapper */
 .contact-container {
   display: block;
   width: 100%;
@@ -18,7 +18,11 @@
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
-  animation: fadeIn 0.5s ease-in;
+
+  /* NEW: Transition on max-height */
+  overflow: hidden;
+  max-height: 1500px; /* big enough for form */
+  transition: max-height 0.8s ease;
 }
 
 /* Heading */
@@ -32,47 +36,87 @@ h2 {
   padding-bottom: 0.5rem;
 }
 
-/* Form elements */
+/* Form layout */
 form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-/* Labels */
-label {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.25rem;
-  display: block;
+/* Input and textarea */
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-/* Inputs + Textarea */
-input[type="text"],
-input[type="email"],
-textarea {
+.form-group input,
+.form-group textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 1rem 0.5rem;
   font-size: 1rem;
+  font-family: inherit;
   border: 1.5px solid #ccc;
   border-radius: 6px;
-  font-family: inherit;
+  outline: none;
   background: #fafafa;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-input:focus,
-textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group input:not(:placeholder-shown),
+.form-group textarea:not(:placeholder-shown) {
+  background: #fff;
   border-color: var(--color-accent);
-  outline: none;
+}
+
+/* Label float */
+.form-group label {
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+  background: #fafafa;
+  padding: 0 0.25rem;
+  color: #888;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -0.6rem;
+  left: 0.4rem;
+  font-size: 0.75rem;
+  color: #333;
   background: #fff;
 }
 
-textarea {
-  min-height: 150px;
-  resize: vertical;
+/* Hide placeholder when not empty or focused */
+input:focus::placeholder,
+input:not(:placeholder-shown)::placeholder,
+textarea:focus::placeholder,
+textarea:not(:placeholder-shown)::placeholder {
+  color: transparent;
 }
 
+/* Autofill fix */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  background-color: #fff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+  color: #000 !important;
+  transition: background-color 0s;
+}
+
+input:-webkit-autofill + label,
+textarea:-webkit-autofill + label {
+  background: #fff;
+}
+
+/* Message feedback */
 .success-message {
   margin-top: 1.5rem;
   padding: 1rem;
@@ -99,9 +143,10 @@ textarea {
   pointer-events: auto;
 }
 
+/* Spinner */
 .spinner {
-  border: 3px solid #f3f3f3; /* Light grey */
-  border-top: 3px solid var(--color-accent); /* Accent color */
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--color-accent);
   border-radius: 50%;
   width: 18px;
   height: 18px;
@@ -115,65 +160,7 @@ textarea {
   100% { transform: rotate(360deg); }
 }
 
-.form-group {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 1rem 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-}
-
-.form-group label {
-  position: absolute;
-  left: 0.5rem;
-  top: 1rem;
-  background: rgb(250, 250, 250);
-  padding: 0 0.25rem;
-  color: #888;
-  font-size: 1rem;
-  pointer-events: none;
-  transition: 0.2s ease all;
-}
-
-/* When input is focused or has content */
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label,
-.form-group textarea:focus + label,
-.form-group textarea:not(:placeholder-shown) + label {
-  top: -0.6rem;
-  left: 0.4rem;
-  font-size: 0.75rem;
-  color: #333;
-  background: #fff;
-}
-/* Hide placeholder text when input is focused or has content */
-input:focus::placeholder,
-input:not(:placeholder-shown)::placeholder,
-textarea:focus::placeholder,
-textarea:not(:placeholder-shown)::placeholder {
-  color: transparent;
-}
-
-/* Ensure label background behind autofill */
-input:-webkit-autofill + label,
-textarea:-webkit-autofill + label {
-  background: #fafafa; /* match input bg so no blue glow behind label */
-}
-/* Autofill overrides */
-input:-webkit-autofill,
-textarea:-webkit-autofill {
-  background-color: #fafafa !important;
-  -webkit-box-shadow: 0 0 0px 1000px #fafafa inset !important;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
+/* Button */
 button {
   display: block;
   margin: auto;
@@ -204,6 +191,6 @@ button:not([disabled]) {
 
 button:not([disabled]):hover {
   background-color: var(--color-accent-light);
-  color: #000000;
+  color: #000;
   transform: scale(1.02);
 }

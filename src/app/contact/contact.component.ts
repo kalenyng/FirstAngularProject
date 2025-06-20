@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import emailjs from 'emailjs-com';
 import { NgIf } from '@angular/common';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-} from '@angular/animations';
-import {RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-contact',
@@ -18,53 +13,123 @@ import {RouterLink} from '@angular/router';
   styleUrls: ['./contact.component.css'],
   animations: [
     trigger('fadeShrink', [
-      transition(':enter', [
+      transition('void => form', [
         style({ opacity: 0, transform: 'scale(0.95)' }),
-        animate('500ms cubic-bezier(0.25, 0.8, 0.25, 1)', style({ opacity: 1, transform: 'scale(1)' })),
+        animate(
+          '700ms cubic-bezier(0.4, 0, 0.2, 1)',
+          style({ opacity: 1, transform: 'scale(1)' })
+        ),
       ]),
-      transition(':leave', [
-        animate('400ms cubic-bezier(0.55, 0, 0.55, 0.2)', style({ opacity: 0, transform: 'scale(0.95)' })),
+      transition('form => void', [
+        animate(
+          '700ms cubic-bezier(0.4, 0, 0.2, 1)',
+          style({ opacity: 0, transform: 'scale(0.95)' })
+        ),
+      ]),
+      transition('void => success', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate(
+          '700ms cubic-bezier(0.4, 0, 0.2, 1)',
+          style({ opacity: 1, transform: 'scale(1)' })
+        ),
+      ]),
+      transition('success => void', [
+        animate(
+          '700ms cubic-bezier(0.4, 0, 0.2, 1)',
+          style({ opacity: 0, transform: 'scale(0.95)' })
+        ),
       ]),
     ]),
   ],
 })
+export class ContactComponent implements AfterViewInit {
+  @ViewChild('container', { static: false }) containerRef!: ElementRef<HTMLDivElement>;
 
-export class ContactComponent {
   form = {
     name: '',
     email: '',
-    message: ''
+    message: '',
   };
 
-  formVisible = true;      // 👈 controls form visibility
-  isSubmitted = false;     // 👈 shows success after animation
   isLoading = false;
+
+  contentState: 'form' | 'success' = 'form';
+
+  private prevHeight = 0;
+  private nextHeight = 0;
+
+  ngAfterViewInit() {
+    if (this.containerRef) {
+      this.prevHeight = this.containerRef.nativeElement.offsetHeight;
+    }
+  }
 
   sendEmail() {
     if (this.isLoading) return;
-
     this.isLoading = true;
+
     const currentYear = new Date().getFullYear();
 
-    emailjs.send('service_gnri5zs', 'template_j9za66g', {
-      from_name: this.form.name,
-      email: this.form.email,
-      message: this.form.message,
-      current_year: currentYear
-    }, 'pT9gayVqHY9iOu6bS')
-      .then(() => {
-        return emailjs.send('service_gnri5zs', 'template_ql8tp1g', {
-          name: this.form.name,
+    emailjs
+      .send(
+        'service_gnri5zs',
+        'template_j9za66g',
+        {
+          from_name: this.form.name,
           email: this.form.email,
           message: this.form.message,
-          time: new Date().toLocaleString(),
-          current_year: currentYear
-        }, 'pT9gayVqHY9iOu6bS');
-      })
+          current_year: currentYear,
+        },
+        'pT9gayVqHY9iOu6bS'
+      )
+      .then(() =>
+        emailjs.send(
+          'service_gnri5zs',
+          'template_ql8tp1g',
+          {
+            name: this.form.name,
+            email: this.form.email,
+            message: this.form.message,
+            time: new Date().toLocaleString(),
+            current_year: currentYear,
+          },
+          'pT9gayVqHY9iOu6bS'
+        )
+      )
       .then(() => {
-        this.isLoading = false;
-        this.formVisible = false; // 👈 triggers fade out
-        // isSubmitted will be set when animation is done
+        if (!this.containerRef) {
+          this.isLoading = false;
+          return;
+        }
+
+        this.prevHeight = this.containerRef.nativeElement.offsetHeight;
+
+        this.contentState = 'success';
+
+        setTimeout(() => {
+          this.nextHeight = this.containerRef.nativeElement.offsetHeight;
+
+          const container = this.containerRef.nativeElement;
+
+          container.style.height = this.prevHeight + 'px';
+
+          // Trigger reflow
+          container.offsetHeight;
+
+          container.style.transition = 'height 700ms ease';
+          container.style.height = this.nextHeight + 'px';
+
+          container.addEventListener(
+            'transitionend',
+            () => {
+              container.style.height = 'auto';
+              container.style.transition = '';
+            },
+            { once: true }
+          );
+
+          this.isLoading = false;
+        }, 0);
       })
       .catch((error) => {
         console.error('Something went wrong:', error);
@@ -73,11 +138,6 @@ export class ContactComponent {
   }
 
   onAnimationDone(event: any) {
-    if (!this.formVisible && !this.isSubmitted) {
-      this.isSubmitted = true; // 👈 fade in success only after fade out finishes
-    }
+    // Optional: handle animation done events if needed
   }
 }
-
-
-
