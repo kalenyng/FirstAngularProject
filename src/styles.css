@@ -16,6 +16,9 @@
   margin: 0;
 }
 
+html{
+  background: var(--color-bg);
+}
 h1{
   font-family: var(--main-font);
   font-size: 4rem;
