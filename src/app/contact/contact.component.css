@@ -72,28 +72,6 @@ textarea {
   resize: vertical;
 }
 
-/* Button */
-button {
-  background-color: var(--color-accent);
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button:hover {
-  background-color: var(--color-accent-light);
-  color: #000;
-}
-
 .success-message {
   margin-top: 1.5rem;
   padding: 1rem;

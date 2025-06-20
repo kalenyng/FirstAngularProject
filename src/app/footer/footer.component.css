@@ -1,10 +1,22 @@
 .footer {
-  background-color: var(--color-bg);      /* same dark black background */
-  color: var(--color-text);                /* same light text */
+  background-color: var(--color-bg);
+  color: var(--color-text);
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
-  box-shadow: 0 -2px 8px var(--color-shadow); /* subtle top shadow */
-  margin-top: auto;                        /* push footer to bottom if flex container */
-  border-top: 2px solid var(--color-accent); /* gold accent border on top */
+  box-shadow: 0 -2px 8px var(--color-shadow);
+  margin-top: auto;
+  border-top: 2px solid var(--color-accent);
+}
+
+strong{
+  color: var(--color-accent);
+}
+
+p a {
+  color: var(--color-accent);
+}
+
+p a:hover {
+  color: var(--color-accent-light);
 }

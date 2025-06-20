@@ -4,6 +4,7 @@
   box-shadow: 0 2px 8px var(--color-shadow);
   padding: 1rem 2rem;
   z-index: 100;
+  font-family: var(--main-font), sans-serif;
 }
 .navbar-toggler-icon {
   position: relative;
@@ -26,6 +27,11 @@
   border-radius: 1px;
 }
 
+button:hover {
+  background-color: var(--color-bg) !important;
+}
+
+
 /* Position the 3 lines */
 .navbar-toggler-icon::before {
   top: 0;
@@ -40,7 +46,6 @@
   bottom: 0;
 }
 
-/* When the navbar toggler is NOT collapsed (i.e., open), animate to X */
 .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
   top: 50%;
   transform: rotate(45deg);
@@ -54,8 +59,6 @@
   bottom: 50%;
   transform: rotate(-45deg);
 }
-
-
 
 .navbar-nav .nav-link {
   color: var(--color-text);

@@ -2,8 +2,8 @@
   --white-bg: #ededed;
   --color-bg: #000000;
   --color-text: #f5f5f5;
-  --color-accent: #d4af37;
-  --color-accent-light: #e3c97e;
+  --color-accent: #aa8e18;
+  --color-accent-light: #a8943b;
   --color-shadow: rgba(0, 0, 0, 0.7);
   --color-shadow-light: rgba(57, 57, 57, 0.3);
   --main-font: 'Georgia', serif;
@@ -71,4 +71,21 @@ h4 {
   animation-delay: 0s; /* optional delay */
 }
 
+button{
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-accent-light);
+  color: #000000;
+  transform: scale(1.02);
+}
 
