@@ -21,7 +21,6 @@ export class ContactComponent {
   isLoading = false;
 
   constructor(private router: Router) {
-    // Load submission state from localStorage when component loads
     this.isSubmitted = localStorage.getItem('contactSubmitted') === 'true';
   }
 
@@ -51,7 +50,7 @@ export class ContactComponent {
         .then(() => {
           console.log('Auto-reply sent');
           this.isSubmitted = true;
-          localStorage.setItem('contactSubmitted', 'true');  // <== Save state
+          localStorage.setItem('contactSubmitted', 'true');
           this.isLoading = false;
           this.router.navigate(['/email-sent']);
         })
