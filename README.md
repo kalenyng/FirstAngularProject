@@ -1,4 +1,4 @@
-# FirstAngularProject
+# Safe. Angular Project
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
@@ -67,7 +67,7 @@ This folder contains the main source code for the Angular application. It is org
 
 #### 📁 `app/` -- Main Application Code
 
-The `app` folder houses all the main pages, routes, and configuration files.
+The `app` folder houses all the main pages, routes, and configuration files
 
 -   **`app.component.*`** -- Root component of the application.
 
@@ -75,11 +75,9 @@ The `app` folder houses all the main pages, routes, and configuration files.
 
 -   **`app.config.ts`** -- Configuration settings or constants.
 
-##### 🏠 `home/` -- Homepage Feature
+##### 🏠 `home/` -- Home page 
 
-Contains subcomponents that make up the homepage:
-
--   **`hero/`** -- Top section of the homepage.
+The `home/` folder contains subcomponents that make up the homepage:
 
 -   **`stats/`** -- Section showing statistics or metrics.
 
@@ -87,20 +85,18 @@ Contains subcomponents that make up the homepage:
 
 -   **`additional-services/`** -- Additional features or services highlighted.
 
-##### 📄 `about/` -- About Page Component
+##### 📄 `about/` -- About Page 
 
-##### ✉️ `contact/` -- Contact Page Components
-
-Includes a nested component:
+##### ✉️ `contact/` -- Contact Page 
 
 #### 📁 `components/` -- All reusable components
 
-##### 📎 `header/` -- Header Component (navigation, branding, etc.)
+-   **`header/`** -- Header Component (navigation, branding, etc.)
 
-##### 📎 `cta/` -- Call-to-action button with changeable text
+-   **`cta/`** -- Call-to-action button with changeable text
 
-##### 📎 `hero/` -- Hero component (Needs image, title and button text to be set)
+-   **`hero/`** -- Hero component (Needs image, title and button text to be set)
 
-##### 📎 `scroll-to-top` -- Scroll-to-top button 
+-   **`scroll-to-top`** -- Scroll-to-top button 
 
-##### 📎 `footer/` -- Footer Component
+-   **`footer/`** -- Footer Component
