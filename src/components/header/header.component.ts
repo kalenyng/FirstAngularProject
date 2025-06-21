@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,4 +11,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   ],
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+}

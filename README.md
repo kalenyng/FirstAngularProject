@@ -54,6 +54,7 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+
 ### 📁 `src/` Folder Overview
 
 This folder contains the main source code for the Angular application. It is organized in a modular and feature-based structure to keep the codebase maintainable and scalable.
@@ -66,7 +67,7 @@ This folder contains the main source code for the Angular application. It is org
 
 #### 📁 `app/` -- Main Application Code
 
-The `app` folder houses all the application components, routes, and configuration files.
+The `app` folder houses all the main pages, routes, and configuration files
 
 -   **`app.component.*`** -- Root component of the application.
 
@@ -74,11 +75,9 @@ The `app` folder houses all the application components, routes, and configuratio
 
 -   **`app.config.ts`** -- Configuration settings or constants.
 
-##### 🏠 `home/` -- Homepage Feature
+##### 🏠 `home/` -- Home page 
 
-Contains subcomponents that make up the homepage:
-
--   **`hero/`** -- Top section of the homepage.
+The `home/` folder contains subcomponents that make up the homepage:
 
 -   **`stats/`** -- Section showing statistics or metrics.
 
@@ -86,14 +85,18 @@ Contains subcomponents that make up the homepage:
 
 -   **`additional-services/`** -- Additional features or services highlighted.
 
-##### 📄 `about/` -- About Page Component
+##### 📄 `about/` -- About Page 
 
-##### ✉️ `contact/` -- Contact Page Components
+##### ✉️ `contact/` -- Contact Page 
 
-Includes a nested component:
+#### 📁 `components/` -- All reusable components
 
--   **`email-sent/`** -- Confirmation message or page after sending a message.
+-   **`header/`** -- Header Component (navigation, branding, etc.)
 
-##### 📎 `footer/` -- Footer Component
+-   **`cta/`** -- Call-to-action button with changeable text
 
-##### 📎 `header/` -- Header Component (navigation, branding, etc.)
+-   **`hero/`** -- Hero component (Needs image, title and button text to be set)
+
+-   **`scroll-to-top`** -- Scroll-to-top button 
+
+-   **`footer/`** -- Footer Component

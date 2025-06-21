@@ -5,7 +5,14 @@
       <p>{{ subtext }}</p>
     </div>
     <div class="hero-cta fade-in">
-        <button (click)="onButtonClick()" [routerLink]="buttonLink">{{ buttonText }}</button>
+      <div class="hero-cta fade-in">
+        <app-cta
+          [buttonText]="buttonText"
+          [buttonLink]="scrollTargetId ? '' : buttonLink"
+          (click)="onButtonClick()"
+        ></app-cta>
+      </div>
+
     </div>
   </div>
 </section>
