@@ -1,0 +1,31 @@
+.scroll-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-to-top-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--color-accent-light);
+  opacity: 0.8;
+  color: #fff;
+  border: none;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

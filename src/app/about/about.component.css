@@ -6,12 +6,10 @@
 }
 
 h1, h2 {
-  font-weight: 700;
   color: var(--color-accent);
 }
 
 h3 {
-  font-weight: 600;
   color: var(--color-accent);
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -40,8 +38,51 @@ img {
   width: auto;
   max-width: 100%;
   height: auto;
+  border-radius: 0.5rem;
 }
 
-.gap-6{
-  gap: 200px;
+.founder-img {
+  max-height: 300px;
+  max-width: 300px;
+  width: auto;
+  flex-shrink: 1; /* allows images to shrink */
 }
+
+.team-img,
+.why-img {
+  max-height: 300px;
+  max-width: 100%;
+}
+
+.gap-6 {
+  gap: 100px;
+}
+
+.d-flex {
+  flex-wrap: nowrap !important; /* prevent wrapping */
+  overflow-x: auto; /* optional: allow horizontal scroll if really small */
+}
+
+@media (max-width: 768px) {
+  .gap-6 {
+    gap: 1.5rem;
+  }
+
+  .founder-img {
+    max-height: 150px;
+    max-width: 150px;
+  }
+
+  .team-img,
+  .why-img {
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .founder-img {
+    max-height: 150px;
+    max-width: 150px;
+  }
+}
+

@@ -57,3 +57,11 @@
   font-size: 0.95rem;
   font-weight: 500;
 }
+
+.cta-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
