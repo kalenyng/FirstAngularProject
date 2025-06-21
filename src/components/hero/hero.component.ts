@@ -1,26 +1,27 @@
 import { Component, Input } from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
-import {NgStyle} from "@angular/common";
+import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { NgStyle } from '@angular/common';
+import {CtaComponent} from '../cta/cta.component';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
+  styleUrls: ['./hero.component.css'],
+  standalone: true,               // Add if you want it standalone, remove if not
   imports: [
     RouterLink,
     NgStyle,
-    // your existing imports
+    CtaComponent
   ],
-  styleUrls: ['./hero.component.css']
 })
 export class HeroComponent {
   @Input() headline: string = 'Safe and Efficient Bookkeeping Services';
   @Input() subtext: string = 'Simplify Your Finances with Safe.';
   @Input() buttonText: string = 'Get in touch';
   @Input() backgroundImage: string = 'url(assets/images/default-hero.jpg)';
-
-  // New inputs:
   @Input() scrollTargetId?: string;
-  @Input() buttonLink?: string;
+  @Input() buttonLink: string = '/contact';
 
   constructor(private router: Router) {}
 
@@ -33,7 +34,6 @@ export class HeroComponent {
     } else if (this.buttonLink) {
       this.router.navigate([this.buttonLink]);
     } else {
-      // fallback behavior (optional)
       console.warn('No scrollTargetId or buttonLink provided');
     }
   }

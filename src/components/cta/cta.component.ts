@@ -1,13 +1,21 @@
-import { Component, Input } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cta',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterModule],
   templateUrl: './cta.component.html',
-  styleUrl: './cta.component.css'
+  styleUrls: ['./cta.component.css'],
 })
 export class CtaComponent {
-  @Input() buttonText: string = ' ';
+  @Input() buttonText: string = 'Click me';
+  @Input() buttonLink?: string;
+
+  // Forward click event to parent
+  @Output() click = new EventEmitter<Event>();
+
+  onClick(event: Event) {
+    this.click.emit(event);
+  }
 }
