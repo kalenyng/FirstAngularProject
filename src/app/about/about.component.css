@@ -41,3 +41,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.gap-6{
+  gap: 200px;
+}
