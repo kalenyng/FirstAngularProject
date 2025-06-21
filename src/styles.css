@@ -26,38 +26,38 @@ body {
 
 
 h1{
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-size: 4rem;
 }
 
 h2{
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-size: 3.5rem;
 }
 
 h3{
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-size: 3rem;
 }
 
 h4 {
-  font-family: var(--secondary-font);
+  font-family: var(--secondary-font), sans-serif;
   font-size: 2.5rem;
 }
 
 @media (max-width: 768px) {
   h1{
-    font-family: var(--main-font);
+    font-family: var(--main-font), sans-serif;
     font-size: 2rem;
   }
 
   h2{
-    font-family: var(--main-font);
+    font-family: var(--main-font), sans-serif;
     font-size: 1.5rem;
   }
 
   h3{
-    font-family: var(--main-font);
+    font-family: var(--main-font), sans-serif;
     font-size: 1rem;
   }
 }
@@ -74,12 +74,12 @@ h4 {
 }
 
 .fade-in {
-  opacity: 0; /* start hidden */
+  opacity: 0;
   animation-name: fadeIn;
   animation-duration: 0.8s;
-  animation-fill-mode: forwards; /* keep final state */
+  animation-fill-mode: forwards;
   animation-timing-function: ease-out;
-  animation-delay: 0s; /* optional delay */
+  animation-delay: 0s;
 }
 
 button{

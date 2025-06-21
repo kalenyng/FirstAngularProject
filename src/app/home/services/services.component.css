@@ -20,16 +20,15 @@
   box-sizing: border-box;
 }
 
-
 /* not sure if there should be a reverse class */
 
-/* .service-item.reverse {
-  flex-direction: row-reverse;
-}
+/*.service-item.reverse {*/
+/*  flex-direction: row-reverse;*/
+/*}*/
 
-.service-item.reverse .service-text {
-  text-align: right;
-} */
+/*.service-item.reverse .service-text {*/
+/*  text-align: right;*/
+/*}*/
 
 .service-icon svg {
   flex-shrink: 0;

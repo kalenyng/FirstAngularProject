@@ -26,17 +26,18 @@ h1 {
   font-size: 2.5rem;
   font-family: var(--main-font), sans-serif;
   padding-bottom: 1rem;
+  margin-left: 5rem;
 }
 
 /* not sure if there should be a reverse class */
 
-/* .service-item.reverse {
-  flex-direction: row-reverse;
-}
+/*.service-item.reverse {*/
+/*  flex-direction: row-reverse;*/
+/*}*/
 
-.service-item.reverse .service-text {
-  text-align: right;
-} */
+/*.service-item.reverse .service-text {*/
+/*  text-align: right;*/
+/*}*/
 
 .service-icon svg {
   flex-shrink: 0;
