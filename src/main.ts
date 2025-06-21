@@ -7,6 +7,6 @@ import { provideAnimations } from '@angular/platform-browser/animations'; // <--
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideAnimations(), // <-- add this here
+    provideAnimations(),
   ]
 });
